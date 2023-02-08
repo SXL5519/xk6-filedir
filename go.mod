@@ -1,4 +1,4 @@
-module xk6-filedir
+module github.com/SXL5519/xk6-filedir
 
 go 1.20
 
