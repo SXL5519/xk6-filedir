@@ -12,15 +12,15 @@ func init() {
 
 type FILEDIR struct{}
 
-func (*FILEDIR) HasDir(path string) (bool, error) {
+func (*FILEDIR) HasDir(path string) bool {
 	_, _err := os.Stat(path)
 	if _err == nil {
-		return true, nil
+		return true
 	}
 	if os.IsNotExist(_err) {
-		return false, nil
+		return false
 	}
-	return false, _err
+	return false
 }
 
 func (*FILEDIR) CreateDir(path string) {
