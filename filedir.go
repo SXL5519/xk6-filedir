@@ -12,7 +12,7 @@ func init() {
 
 type FILEDIR struct{}
 
-func (*FILEDIR) hasdir(path string) bool {
+func (*FILEDIR) HasDir(path string) bool {
 	_, _err := os.Stat(path)
 	if _err == nil {
 		return true
@@ -23,7 +23,7 @@ func (*FILEDIR) hasdir(path string) bool {
 	return false
 }
 
-func (*FILEDIR) createdir(path string) {
+func (*FILEDIR) CreateDir(path string) {
 	err := os.Mkdir(path, os.ModePerm)
 	if err != nil {
 		fmt.Printf("创建目录异常 -> %v\n", err)
