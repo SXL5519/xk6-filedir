@@ -7,12 +7,12 @@ import (
 )
 
 func init() {
-	modules.Register("k6/x/filedir", new(FILEDIR))
+	modules.Register("k6/x/filedir", new(FileDir))
 }
 
-type FILEDIR struct{}
+type FileDir struct{}
 
-func (*FILEDIR) HasDir(path string) bool {
+func (*FileDir) HasDir(path string) bool {
 	_, _err := os.Stat(path)
 	if _err == nil {
 		return true
@@ -23,7 +23,7 @@ func (*FILEDIR) HasDir(path string) bool {
 	return false
 }
 
-func (*FILEDIR) CreateDir(path string) {
+func (*FileDir) CreateDir(path string) {
 	err := os.Mkdir(path, os.ModePerm)
 	if err != nil {
 		fmt.Printf("创建目录异常 -> %v\n", err)
