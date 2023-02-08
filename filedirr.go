@@ -1,4 +1,4 @@
-package filedir
+package filedirr
 
 import (
 	"fmt"
@@ -7,7 +7,7 @@ import (
 )
 
 func init() {
-	modules.Register("k6/x/filedir", new(FileDir))
+	modules.Register("k6/x/filedirr", new(FileDir))
 }
 
 type FileDir struct{}
