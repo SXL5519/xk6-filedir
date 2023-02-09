@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"go.k6.io/k6/js/modules"
 	"os"
+	"path/filepath"
 )
 
 func init() {
@@ -24,10 +25,24 @@ func (*FileDir) HasDir(path string) bool {
 }
 
 func (*FileDir) CreateDir(path string) {
-	err := os.Mkdir(path, os.ModePerm)
+	err := os.MkdirAll(path, os.ModePerm)
 	if err != nil {
 		fmt.Printf("创建目录异常 -> %v\n", err)
 	} else {
 		fmt.Println("创建成功!")
+	}
+}
+
+func (*FileDir) FileDirs(path string) {
+	var files []string
+	err := filepath.Walk(path, func(path string, info os.FileInfo, err error) error {
+		files = append(files, path)
+		return nil
+	})
+	if err != nil {
+		panic(err)
+	}
+	for _, file := range files {
+		fmt.Println(file)
 	}
 }
