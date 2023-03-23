@@ -48,7 +48,7 @@ func (*FileDir) FileDirs(path string) {
 	}
 }
 
-func (*FileDir) ReadTxtFile(path string) ([]string, error) {
+func (*FileDir) Readtf(path string) ([]string, error) {
 	file, err := os.Open(path)
 
 	if err != nil {
